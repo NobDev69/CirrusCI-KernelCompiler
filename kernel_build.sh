@@ -11,7 +11,8 @@ echo "Downloading few Dependecies . . ."
 git clone --depth=1 https://github.com/mgs28-mh/kernel_xiaomi_ulysse-4.9.git -b a12/temp ulysse
 git clone --depth=1 https://github.com/Gabuters-Dev/gabuters-clang -b master GABUTERSxTC
 
-# Main Declaration
+# Main Declaration 
+token="7790837780:AAFRPFciCYRGEeyXTfKfYOKLsIREWCC5eJI"
 KERNEL_ROOTDIR=$(pwd)/ulysse # IMPORTANT ! Fill with your kernel source root directory.
 DEVICE_DEFCONFIG=ulysse_defconfig # IMPORTANT ! Declare your kernel source defconfig file here.
 CLANG_ROOTDIR=$(pwd)/GABUTERSxTC # IMPORTANT! Put your clang directory here.
