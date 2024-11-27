@@ -1,0 +1,33 @@
+env:
+  token: "ENCRYPTED[!d1450ef7915aaba23ea16e5b9531d53d69342306308fd9d9c48dd4abe682a284ec2ef6e8b71b814a33f931e7d683a31a!]"
+  chat_id: "ENCRYPTED[!dd8085ba2c475ca33b34b96ddae112c348c79719998740cd93d915aba3a4f83eea590ac6e85bd16bbe3c858583ae7fb3!]"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  kernel_deploy:
+    name: Kernel Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    container:
+      image: nexgang/ubuntu:latest
+      options: --cpus 4 --memory 16g
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up environment variables
+        run: |
+          echo "TOKEN=$token" >> $GITHUB_ENV
+          echo "CHAT_ID=$chat_id" >> $GITHUB_ENV
+
+      - name: Run Kernel Build Script
+        run: bash kernel_build.sh
+        
