@@ -1,8 +1,8 @@
 name: Kernel Deployment
 
 env:
-  token: "7790837780:AAFRPFciCYRGEeyXTfKfYOKLsIREWCC5eJI"
-  chat_id: "-1002407762707"
+  token: ${{ secrets.TOKEN }}
+  chat_id: ${{ secrets.CHAT_ID }}
 
 on:
   push:
@@ -27,8 +27,8 @@ jobs:
 
       - name: Set up environment variables
         run: |
-          echo "TOKEN=$token" >> $GITHUB_ENV
-          echo "CHAT_ID=$chat_id" >> $GITHUB_ENV
+          echo "TOKEN=${{ secrets.TOKEN }}" >> $GITHUB_ENV
+          echo "CHAT_ID=${{ secrets.CHAT_ID }}" >> $GITHUB_ENV
 
       - name: Run Kernel Build Script
         run: bash kernel_build.sh
